@@ -1,0 +1,52 @@
+{
+  "event": {
+    "name": "Parrish Slam 2026",
+    "dates": "Thu 8/6 – Sun 8/9",
+    "location": "Crabapple"
+  },
+  "links": {
+    "workbook": "https://docs.google.com/spreadsheets/d/1UEoCDKke0IPfs6Ze7Ivtj9rg4Aw1mpkazDQRpCTOQho/edit?usp=sharing",
+    "mealSignUp": "https://docs.google.com/document/d/12goUFfKQOH31BNNMwFoHciIlXzE-yfsCsSIuVc09pG4/edit?usp=sharing",
+    "committeeSignUp": "https://docs.google.com/document/d/1IBTFiimwF-40V6yzrjPH3dggOwtmnF7nGSMS64qvkHg/edit?usp=sharing"
+  },
+  "itinerary": [
+    {
+      "day": "Thu 8/6",
+      "color": "#FCE4D6",
+      "lines": [
+        "Casa Bonita @ 2:30pm (late lunch/early dinner)",
+        "Art project kicks off · croquet & ping pong set up",
+        "Evening: board games + snacking"
+      ]
+    },
+    {
+      "day": "Fri 8/7",
+      "color": "#D9E1F2",
+      "lines": [
+        "Clear Creek swimmin' & tubin'",
+        "Dinner: Christmas in Augus SUSHI babyyyy"
+      ]
+    },
+    {
+      "day": "Sat 8/8",
+      "color": "#E2EFDA",
+      "lines": [
+        "Activity: TBD",
+        "Dinner: Drew's Tomato Sauce & Spaghetti"
+      ]
+    },
+    {
+      "day": "Sun 8/9",
+      "color": "#FFF2CC",
+      "lines": [
+        "BDAYPARTY",
+        "Dinner: GRILLIN' & CHILLIN'"
+      ]
+    }
+  ],
+  "notes": {
+    "address": "[ one four zero seven zero]",
+    "wifi": "[ turn off your phone and hang with your family! ]",
+    "emergencyContact": "[ ur mom ]"
+  }
+}

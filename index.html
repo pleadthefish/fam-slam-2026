@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parrish Slam 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Parrish Slam 2026</h1>
+    <p class="event-meta">Thu 8/6 – Sun 8/9 &middot; Crabapple</p>
+  </header>
+
+  <main>
+
+    <section id="quick-links">
+      <h2>Quick Links</h2>
+      <div class="link-cards" id="link-cards">
+        <!-- Populated by js/main.js -->
+      </div>
+    </section>
+
+    <section id="itinerary">
+      <h2>Itinerary at a Glance</h2>
+      <div class="itinerary-grid" id="itinerary-days">
+        <!-- Populated by js/main.js -->
+      </div>
+    </section>
+
+    <section id="suggestions">
+      <h2>Suggestion Portal</h2>
+      <p class="section-description">Meals, activities, new committees essential for the fun and functioning of the weekend. Got an idea? We want to hear it.</p>
+      <form id="suggestion-form" novalidate>
+        <label for="suggestion">Suggestion</label>
+        <textarea id="suggestion" name="suggestion" placeholder="What's your idea?" required></textarea>
+
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+          <option value="Meal">Meal</option>
+          <option value="Activity">Activity</option>
+          <option value="Committee">Committee</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="initials">Name</label>
+        <input type="text" id="initials" name="initials" placeholder="e.g. Norman" required>
+
+        <button type="submit">Submit</button>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="notes">
+      <h2>Notes</h2>
+      <div id="notes-content">
+        <!-- Populated by js/main.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Parrish Slam 2026 &mdash; see you there
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

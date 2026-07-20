@@ -1,0 +1,381 @@
+/* ── Custom Properties ───────────────────────────────────── */
+:root {
+  --cream:        #FAF7F2;
+  --ink:          #1C1410;
+  --ink-mid:      #5A4E46;
+  --ink-faint:    rgba(28, 20, 16, 0.38);
+  --border:       rgba(28, 20, 16, 0.09);
+  --white:        #FFFFFF;
+  --radius-card:  16px;
+  --radius-input: 11px;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Day palette */
+  --thu: #FCE4D6;
+  --fri: #D9E1F2;
+  --sat: #E2EFDA;
+  --sun: #FFF2CC;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--cream);
+  min-height: 100dvh;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+header {
+  background: var(--ink);
+  /* very subtle warmth bloom — nearly invisible, purely atmospheric */
+  background-image:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(252,228,214,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 90%, rgba(217,225,242,0.07) 0%, transparent 55%);
+  color: var(--cream);
+  padding: 3.5rem 1.5rem 3rem;
+  text-align: center;
+  animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 12vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+
+header .event-meta {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  color: rgba(250, 247, 242, 0.45);
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+main {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 2.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+section > h2 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+/* staggered section reveals */
+main section:nth-child(1) { animation: fadeUp 0.55s 0.07s cubic-bezier(0.22, 1, 0.36, 1) both; }
+main section:nth-child(2) { animation: fadeUp 0.55s 0.14s cubic-bezier(0.22, 1, 0.36, 1) both; }
+main section:nth-child(3) { animation: fadeUp 0.55s 0.21s cubic-bezier(0.22, 1, 0.36, 1) both; }
+main section:nth-child(4) { animation: fadeUp 0.55s 0.28s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  header, main section { animation: none; }
+}
+
+/* ── Quick Links ─────────────────────────────────────────── */
+.link-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+a.link-card,
+span.link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.15rem 1.35rem;
+  text-decoration: none;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s, border-color 0.12s, transform 0.08s;
+}
+
+.link-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link-card-label {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.link-card-desc {
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.45;
+}
+
+a.link-card:active {
+  background: #F2EDE4;
+  border-color: rgba(28, 20, 16, 0.22);
+  transform: scale(0.975);
+}
+
+@media (hover: hover) {
+  a.link-card:hover {
+    background: #FDFAF5;
+    border-color: rgba(28, 20, 16, 0.2);
+  }
+}
+
+.link-card .arrow {
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  flex-shrink: 0;
+  transition: transform 0.12s;
+}
+
+a.link-card:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ── Itinerary ───────────────────────────────────────────── */
+.itinerary-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.day-card {
+  border-radius: var(--radius-card);
+  padding: 1.15rem 1.25rem 1.3rem 1.55rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* left accent strip — slightly deeper tint of the card color */
+.day-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: rgba(28, 20, 16, 0.14);
+  border-radius: 2px 0 0 2px;
+}
+
+.day-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(28, 20, 16, 0.48);
+  margin-bottom: 0.6rem;
+}
+
+.day-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day-card li {
+  font-size: 0.975rem;
+  line-height: 1.45;
+  color: var(--ink);
+  padding: 0.32rem 0;
+}
+
+.day-card li + li {
+  border-top: 1px solid rgba(28, 20, 16, 0.09);
+}
+
+/* ── Section description ─────────────────────────────────── */
+.section-description {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  margin-top: -0.25rem;
+}
+
+/* ── Suggestion Form ─────────────────────────────────────── */
+#suggestion-form {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#suggestion-form label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-top: 1rem;
+}
+
+#suggestion-form label:first-child {
+  margin-top: 0;
+}
+
+#suggestion-form textarea,
+#suggestion-form select,
+#suggestion-form input[type="text"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid rgba(28, 20, 16, 0.13);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 16px; /* critical: prevents iOS auto-zoom on focus */
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--cream);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+/* keep native select appearance on iOS — the wheel picker is more usable than a custom one */
+#suggestion-form textarea,
+#suggestion-form input[type="text"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#suggestion-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#suggestion-form textarea:focus,
+#suggestion-form select:focus,
+#suggestion-form input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(28, 20, 16, 0.42);
+  background: var(--white);
+}
+
+#suggestion-form button[type="submit"] {
+  margin-top: 1.1rem;
+  height: 56px;
+  padding: 0 1.25rem;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s, transform 0.08s;
+}
+
+#suggestion-form button[type="submit"]:active:not(:disabled) {
+  transform: scale(0.975);
+  background: #3D2B1F;
+}
+
+@media (hover: hover) {
+  #suggestion-form button[type="submit"]:hover:not(:disabled) {
+    background: #3D2B1F;
+  }
+}
+
+#suggestion-form button[type="submit"]:disabled {
+  background: rgba(28, 20, 16, 0.22);
+  cursor: not-allowed;
+}
+
+#form-status {
+  min-height: 1.4em;
+  padding-top: 0.3rem;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+#form-status.success { color: #2A6E2A; }
+#form-status.error   { color: #B03A2A; }
+
+/* ── Notes ───────────────────────────────────────────────── */
+.notes-list {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 1.3rem 1.5rem;
+}
+
+.notes-list dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-top: 1.1rem;
+}
+
+.notes-list dt:first-child {
+  margin-top: 0;
+}
+
+.notes-list dd {
+  margin: 0.25rem 0 0;
+  font-size: 0.975rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mid);
+  opacity: 0.55;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+/* ── Animation ───────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
