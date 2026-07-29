@@ -21,9 +21,37 @@ async function init() {
     container.innerHTML = suggestions.map(renderCard).join('');
     container.addEventListener('click', handleClick);
     container.addEventListener('keydown', handleKeydown);
+    renderIndex();
   } catch {
     container.innerHTML = `<p class="error-state">Couldn't load suggestions — check your connection and refresh.</p>`;
   }
+}
+
+function renderIndex() {
+  const section = document.getElementById('suggestions-index');
+  const list = document.getElementById('suggestions-index-list');
+  if (!section || !list || !suggestions.length) return;
+
+  const order = ['Meal', 'Activity', 'Committee', 'Other'];
+  const grouped = {};
+  suggestions.forEach(s => {
+    const cat = s.category || 'Other';
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(s);
+  });
+
+  list.innerHTML = order
+    .filter(cat => grouped[cat])
+    .map(cat =>
+      grouped[cat].map(s =>
+        `<li class="index-item">
+          <span class="index-category">${escapeHtml(cat)}</span>
+          <span class="index-text">${escapeHtml(s.text)}</span>
+        </li>`
+      ).join('')
+    ).join('');
+
+  section.style.display = '';
 }
 
 function renderCard(s) {

@@ -234,6 +234,52 @@
   .comment-submit:hover { background: #3D2B1F; }
 }
 
+/* ── Suggestions Index ───────────────────────────────────── */
+#suggestions-index {
+  border-top: 1px solid var(--border);
+}
+
+#suggestions-index h2 {
+  margin-bottom: 0.75rem;
+}
+
+#suggestions-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.index-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--border);
+}
+
+.index-item:last-child { border-bottom: none; }
+
+.index-category {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 5rem;
+}
+
+.index-text {
+  color: var(--ink);
+}
+
 /* ── States ──────────────────────────────────────────────── */
 .loading-state,
 .empty-state,
