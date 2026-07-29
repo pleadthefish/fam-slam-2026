@@ -137,6 +137,22 @@
   .btn-boring:hover  { background: #F8D9D6; }
 }
 
+/* active = user's current vote */
+.btn-heckyes.vote-active { background: #C2E4C2; border-color: rgba(37,99,37,0.55); }
+.btn-like.vote-active    { background: #F0E0A0; border-color: rgba(122,85,0,0.55); }
+.btn-boring.vote-active  { background: #F2C0BB; border-color: rgba(140,35,24,0.55); }
+
+/* taken = voted elsewhere on this card */
+.vote-btn.vote-taken { opacity: 0.45; }
+
+/* label showing current vote */
+.voted-label {
+  font-size: 0.65rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  margin-left: auto;
+}
+
 /* ── Comment Toggle ──────────────────────────────────────── */
 .comment-toggle {
   display: block;
