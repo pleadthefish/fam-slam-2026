@@ -32,6 +32,38 @@ async function init() {
   renderItinerary(data.itinerary);
   renderNotes(data.notes);
   wireForm();
+  renderTicker();
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+async function renderTicker() {
+  const section = document.getElementById('suggestions-ticker');
+  try {
+    const res = await fetch(APPS_SCRIPT_URL);
+    const data = await res.json();
+    const suggestions = data.suggestions || [];
+    if (!suggestions.length) return;
+
+    const track = document.getElementById('ticker-track');
+    const itemsHtml = suggestions.map(s =>
+      `<span class="ticker-item">` +
+        `<span class="ticker-category">${escapeHtml(s.category)}</span> ` +
+        `${escapeHtml(s.text)}` +
+      `</span>`
+    ).join('');
+    track.innerHTML = itemsHtml + itemsHtml; // duplicate for seamless loop
+    track.style.animationDuration = `${Math.max(15, suggestions.length * 3)}s`;
+    section.style.display = '';
+  } catch {
+    // Silently hide — ticker is a bonus feature
+  }
 }
 
 function renderLinks(links) {
